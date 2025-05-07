@@ -1,0 +1,5 @@
+<h1>Tirik mualliflarning kitoblari</h1>
+
+{% for kitob in kitoblar %}
+<p>{{ forloop.counter }}. {{ kitob.nom }}</p>
+{% endfor %}

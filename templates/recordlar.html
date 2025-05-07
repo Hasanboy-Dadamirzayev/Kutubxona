@@ -1,0 +1,5 @@
+<h1>Recordlar ro'yhati</h1>
+
+{% for record in recordlar %}
+<p>{{ forloop.counter }}. {{ record.talaba }} {{record.kitob }} {{record.admin }} {{ record.olingan_sana }} {{ rceord.qaytarish_sana }} {{record.qaytarilgan }}</p>
+{% endfor %}

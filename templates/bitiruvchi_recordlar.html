@@ -1,0 +1,5 @@
+<h1>Bitiruvchilarning recordlari</h1>
+
+{% for record in recordlar %}
+<p>ism: {{ record.talaba }} kitob nomi: {{ record.kitob }} kutubxonchi: {{ record.admin }} olingan sana {{ record.olingan_sana }} qaytarilgan sana {{ record.qaytarilgan_sana }} qaytarilgan yoki yoq {{ record.qaytarilgan }}</p>
+{% endfor %}
