@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Yangi admin qoshish</h1>
+<hr>
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="ism" placeholder="Ism...">
+    <input type="datetime-local" name="ish_vaqti">
+    <button>Saqlash</button>
+</form>
+<hr>
+<h1>Adminlar</h1>
+
+{% for admin in adminlar %}
+<p>{{ forloop.counter }}. {{ admin.ism }} </p>
+{% endfor %}
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Talabalar ro'yhati</h1>
+<form>
+  <input type="text" name="search" placeholder="Qiridirsh..." value="{{ search }}">
+  <button>Qidirish</button>
+</form>
+<hr>
+{% for record in recordlar %}
+<p>{{ forloop.counter }}. {{ record.talaba }}</p>
+{% endfor %}
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+
+    <label>Ism:</label>
+    <select name="talaba">
+        {% for talaba in talabalar %}
+            <option value="{{ talaba.id }}">{{ talaba.ism }}</option>
+        {% endfor %}
+    </select><br>
+
+    <label>Kitob:</label>
+    <select name="kitob">
+        {% for kitob in kitoblar %}
+            <option value="{{ kitob.id }}">{{ kitob.nom }}</option>
+        {% endfor %}
+    </select><br>
+
+    <label>Admin:</label>
+    <select name="admin">
+        {% for admin in adminlar %}
+            <option value="{{ admin.id }}">{{ admin.username }}</option>
+        {% endfor %}
+    </select><br>
+
+    <label>Olingan sana:</label>
+    <input type="date" name="olingan_sana"><br>
+
+    <label>Qaytarish sana:</label>
+    <input type="date" name="qaytarish_sana"><br>
+
+    <label>Qaytarilgan:</label>
+    <input type="checkbox" name="qaytarilgan"><br>
+
+    <button>Saqlash</button>
+</form>
+
+</body>
+</html>

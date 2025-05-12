@@ -1,4 +1,11 @@
-<h1>Mualliflar ro'yhati</h1>
+<h1>Mualliflar royhati</h1>
+<hr>
+<form>
+    <input type="text" name="search" placeholder="Qiridirsh..." {% if search %} value="{{ search }}" {% endif %}>
+    <button>Qidirish</button>
+</form>
+<a href="/mualliflar/create">Muallif qoshish</a>
 {% for muallif in mualliflar %}
-<p>{{ forloop.counter }}. {{muallif.ism}}</p>
+<p> {{ forloop.counter }}. {{ muallif.ism }}</p>
+<a href="/mualliflar/{{ muallif.id }}/delete"><button>O'chirish</button></a>
 {% endfor %}

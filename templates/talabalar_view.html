@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Talabalar ro'yhati</title>
+</head>
+<body>
+<h1>Talabalar ro'yhati</h1>
+
+{% for talaba in talabalar %}
+<a href="/talabalar/{{ talaba.id }}/"> {{ forloop.counter }}. {{ talaba.ism }} </a>
+<a href="/talabalar/{{ talaba.id }}/delete"><button>O'chirish</button></a>
+<br>
+
+{% endfor %}
+</body>
+</html>

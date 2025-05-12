@@ -5,11 +5,8 @@ from main.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('mualliflar/', mualliflar),
-    path('muallif1/', muallif1),
     path('kitoblar/', kitoblar),
     path('kitob/', kitob),
-    path('recordlar/', recordlar),
     path('tirik', tirik),
     path('eng_katta/', eng_katta),
     path('kitobi_kop/', kitobi_kop),
@@ -20,4 +17,16 @@ urlpatterns = [
     path('kitob_soni/', kitob_soni),
     path('tanlangan_record/', tanlangan_record),
     path('bitiruvchi_recordlar', bitiruvchi_recordlar),
+    path('talabalar/', talabalar_view, name='talabalar'),
+    path('talabalar/<int:talaba_id>/', talaba_view),
+    path('talabalar/<int:talaba_id>/delete', talaba_delete_view),
+    path('mualliflar/', mualliflar, name='maulliflar'),
+    path('mualliflar/<int:muallif_id>/delete', muallif_delete_view),
+    path('mualliflar/create', mualliflar_from),
+    path('recordlar/', recordlar, name='recordlar'),
+    path('recordlar/<int:record_id>/', record_confirm),
+    path('recordlar/<int:record_id>/delete', record_delete),
+    path('record_talabalar/', record_talabalar),
+    path('recordlar/create', record_create),
+    path('adminlar/', adminlar, name='adminlar'),
 ]

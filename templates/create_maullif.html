@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    <label>Ism:</label>
+    <input type="text" name="ism"><br>
+    <label>Jins:</label>
+    <input type="text" name="jins"><br>
+    <label>Tugulgan sana</label>
+    <input type="date" name="tugilgan_sana"><br>
+    <label>Kitob soni</label>
+    <input type="number" name="kitob_soni"><br>
+    <input type="radio" name="tirik"><br>
+    <button>Qoshish</button>
+</form>
+</body>
+</html>

@@ -1,5 +1,15 @@
-<h1>Recordlar ro'yhati</h1>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recordlar</title>
+</head>
+<body>
+<a href="/recordlar/create">Yangi rekord qoshish</a>
 {% for record in recordlar %}
-<p>{{ forloop.counter }}. {{ record.talaba }} {{record.kitob }} {{record.admin }} {{ record.olingan_sana }} {{ rceord.qaytarish_sana }} {{record.qaytarilgan }}</p>
+    <p> {{ forloop.counter }}. {{ record.talaba }}</p>
+    <a href="/recordlar/{{ record.id }}/">Ochirish</a>
+
 {% endfor %}
+</body>
+</html>
