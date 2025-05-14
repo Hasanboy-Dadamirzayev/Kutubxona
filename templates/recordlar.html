@@ -9,7 +9,7 @@
 {% for record in recordlar %}
     <p> {{ forloop.counter }}. {{ record.talaba }}</p>
     <a href="/recordlar/{{ record.id }}/">Ochirish</a>
-
+    <button><a href="/recordlar/{{ record.id }}/edit">Tahrirlash</a></button>
 {% endfor %}
 </body>
 </html>

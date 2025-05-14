@@ -10,6 +10,7 @@
 {% for talaba in talabalar %}
 <a href="/talabalar/{{ talaba.id }}/"> {{ forloop.counter }}. {{ talaba.ism }} </a>
 <a href="/talabalar/{{ talaba.id }}/delete"><button>O'chirish</button></a>
+<a href="/talabalar/{{ talaba.id }}/update"><button>Tahrirlash</button></a>
 <br>
 
 {% endfor %}

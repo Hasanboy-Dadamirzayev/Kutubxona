@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ kutubxonachi.ism }}</title>
+</head>
+<body>
+<p>{{ kutubxonachi.ism }} malumoti tahrirlanyapti</p>
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="ism">
+    <input type="datetime-local" name="ish_vaqti">
+    <button>saqlash</button>
+</form>
+
+</body>
+</html>

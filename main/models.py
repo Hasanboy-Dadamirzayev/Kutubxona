@@ -15,8 +15,9 @@ class Talaba(models.Model):
         return str(self.ism)
 
 class Muallif(models.Model):
+    JINS_TANLASH = (("Erkak", "Erkak"), ("Ayol", "Ayol"))
     ism = models.CharField(max_length=255)
-    jins = models.CharField(choices=(("Erkak", "Erkak"), ("Ayol", "Ayol")))
+    jins = models.CharField(choices=JINS_TANLASH)
     tugilgan_sana = models.DateField(blank=True, null=True)
     kitob_soni = models.PositiveSmallIntegerField(default=1)
     tirik = models.BooleanField(default=True)

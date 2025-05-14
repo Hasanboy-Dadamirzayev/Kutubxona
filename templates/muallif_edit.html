@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>{{ muallif.ism }} malumoti tahrirlanyapti</p>
+<form method="post">
+  {% csrf_token %}
+  <input type="text" name="ism" value="{{ muallif.ism }}" required>
+  <select name="jins">
+    {% for jins in jinslar %}
+    <option value="{{ jins.0 }}" {% if muallif.jins == jins.0 %} selected {% endif %}>
+      {{ jins.1 }}
+    </option>
+    {% endfor %}
+  </select>
+  <input type="date" name="tugilgan_sana" value="{{ muallif.tugilgan_sana }}">
+  <input type="number" name="kitob_soni" value="{{ muallif.kitob_soni }}">
+  <input type="checkbox" name="tirik" {% if muallif.tirik %} checked {% endif %}>
+  <button>Saqlash</button>
+
+</form>
+
+</body>
+</html>

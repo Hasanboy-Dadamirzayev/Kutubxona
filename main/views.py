@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from main.models import *
 
@@ -119,9 +119,28 @@ def mualliflar(request):
 
     context = {
         'mualliflar': mualliflar,
-        'search': search
+        'search': search,
     }
     return render(request, 'mualliflar.html', context)
+
+def muallif_edit(request, muallif_id):
+    muallif = Muallif.objects.get(id=muallif_id)
+
+    if request.method == 'POST':
+        Muallif.objects.filter(id=muallif_id).update(
+            ism = request.POST.get('ism'),
+            jins = request.POST.get('jins'),
+            tugilgan_sana = request.POST.get('tugilgan_sana'),
+            kitob_soni = request.POST.get('kitob_soni'),
+            tirik = True if request.POST.get('tirik') == 'on' else False
+        )
+        return redirect('maulliflar')
+
+    context = {
+        'muallif': muallif,
+        'jinslar': Muallif.JINS_TANLASH,
+    }
+    return render(request, 'muallif_edit.html', context)
 
 def muallif_delete_view(request, muallif_id):
     muallif = Muallif.objects.get(id=muallif_id)
@@ -195,15 +214,75 @@ def mualliflar_from(request):
         return redirect('maulliflar')
     return render(request, 'create_maullif.html')
 
-def adminlar(request):
+
+def talaba_update_view(request, talaba_id):
+    talaba = get_object_or_404(Talaba, id=talaba_id)
+
     if request.method == 'POST':
-        Admin.objects.create(
+        Talaba.objects.filter(id=talaba_id).update(
             ism = request.POST.get('ism'),
-            ish_vaqti = request.POST.get('ish_vaqti')
+            guruh = request.POST.get('guruh'),
+            kurs = request.POST.get('kurs'),
+            kitob_soni = request.POST.get('kitob_soni')
         )
-        return redirect('adminlar')
+        return redirect('talabalar')
+
+
+    talaba = Talaba.objects.get(id=talaba_id)
+    context = {
+        'talaba': talaba
+    }
+    return render(request, 'student_update.html', context)
+
+def adminlar(request):
     adminlar = Admin.objects.all()
     context = {
         'adminlar': adminlar
     }
     return render(request, 'adminlar.html', context)
+
+def kutubxonachi(request, kutubxonachi_id):
+    kutubxonachi = Admin.objects.get(id=kutubxonachi_id)
+    context = {
+        'kutubxonachi': kutubxonachi
+    }
+    return render(request, 'kutubxonachi.html', context)
+
+def kutubxonachi_delete(request, kutubxonachi_id):
+    kutubxonachi = Admin.objects.get(id=kutubxonachi_id)
+    kutubxonachi.delete()
+    return redirect('adminlar')
+
+def kutubxonachi_delete_confirm(request, kutubxonachi_id):
+    kutubxonachi = Admin.objects.get(id=kutubxonachi_id)
+    context = {
+        'kutubxonachi': kutubxonachi
+    }
+    return render(request, 'kutubxonachi_delete_confirm.html', context)
+
+def kutubxonachi_edit(request, kutubxonachi_id):
+    kutubxonachi = Admin.objects.get(id=kutubxonachi_id)
+    if request.method == 'POST':
+        Admin.objects.filter(id=kutubxonachi_id).update(
+            ism = request.POST.get('ism'),
+            ish_vaqti = request.POST.get('ish_vaqti'),
+        )
+        return redirect('adminlar')
+    context = {
+        'kutubxonachi': kutubxonachi
+    }
+    return render(request, 'kutubxonachi_edit.html', context)
+
+def record_edit(request, record_id):
+    record = Record.objects.get(id=record_id)
+    if request.method == 'POST':
+        Record.objects.filter(id=record_id).update(
+            olingan_sana = request.POST.get('olingan_sana'),
+            qaytarish_sana = request.POST.get('qaytarish_sana'),
+        )
+        return redirect('recordlar')
+    context = {
+        'record': record,
+    }
+    return render(request, 'recordlar_edit.html', context)
+

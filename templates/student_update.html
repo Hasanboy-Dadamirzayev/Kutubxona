@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>{{ talaba.ism }} malumotlari tahrirlanyapti</p>
+
+<form method="post">
+    {% csrf_token %}
+    <label>Ism:</label>
+    <input type="text" name="ism">
+    <label>Guruh:</label>:</label>
+    <input type="text" name="guruh">
+    <label>Kurs:</label>
+    <input type="text" name="kurs">
+    <label>Kitob soni:</label>
+    <input type="text" name="kitob_soni">
+    <button>Saqlash</button>
+
+</form>
+
+</body>
+</html>

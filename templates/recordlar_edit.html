@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>{{ record.talaba }} olingan qaytarilgan muddatlarini ozgartirish</p>
+<form method="post">
+    {% csrf_token %}
+    <label>OLingan sana:</label>
+    <input type="date" name="olingan_sana" value="{{ record.olingan_sana }}">
+    <label>Qaytarish sanasi:</label>
+    <input type="date" name="qaytarish_sana" value="{{ record.qaytarish_sana }}">
+    <button>Saqlash</button>
+</form>
+</body>
+</html>

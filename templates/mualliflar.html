@@ -4,8 +4,9 @@
     <input type="text" name="search" placeholder="Qiridirsh..." {% if search %} value="{{ search }}" {% endif %}>
     <button>Qidirish</button>
 </form>
-<a href="/mualliflar/create">Muallif qoshish</a>
+<button><a href="/mualliflar/create">Muallif qoshish</a></button>
 {% for muallif in mualliflar %}
 <p> {{ forloop.counter }}. {{ muallif.ism }}</p>
-<a href="/mualliflar/{{ muallif.id }}/delete"><button>O'chirish</button></a>
+<button><a href="/mualliflar/{{ muallif.id }}/delete">Ochirish</a></button>
+<button><a href="/mualliflar/{{ muallif.id }}/edit">Tahrirlash</a></button>
 {% endfor %}
