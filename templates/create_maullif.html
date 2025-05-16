@@ -7,15 +7,7 @@
 <body>
 <form method="post">
     {% csrf_token %}
-    <label>Ism:</label>
-    <input type="text" name="ism"><br>
-    <label>Jins:</label>
-    <input type="text" name="jins"><br>
-    <label>Tugulgan sana</label>
-    <input type="date" name="tugilgan_sana"><br>
-    <label>Kitob soni</label>
-    <input type="number" name="kitob_soni"><br>
-    <input type="radio" name="tirik"><br>
+    {{ form.as_p }}
     <button>Qoshish</button>
 </form>
 </body>

@@ -36,5 +36,6 @@ urlpatterns = [
     path('adminlar/<int:kutubxonachi_id>/delete', kutubxonachi_delete),
     path('adminlar/<int:kutubxonachi_id>/confirm', kutubxonachi_delete_confirm),
     path('adminlar/<int:kutubxonachi_id>/edit', kutubxonachi_edit),
+    path('adminlar/create', admin_create),
 
 ]

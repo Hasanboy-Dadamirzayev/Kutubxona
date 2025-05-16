@@ -6,6 +6,7 @@
 </head>
 <body>
 <h1>Adminlar ro'yhati</h1>
+<button><a href="/adminlar/create">Admin qoshish</a></button>
 {% for admin in adminlar %}
 <p>{{ forloop.counter }}. {{ admin.ism }} </p>
 <button><a href="/adminlar/{{ admin.id }}">Malumotlarni korish</a></button>

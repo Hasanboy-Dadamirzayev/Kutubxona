@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from main.models import *
+from .forms import *
 
 from main.models import *
 
@@ -159,20 +160,17 @@ def recordlar(request):
 
 def record_create(request):
     if request.method == 'POST':
-        Record.objects.create(
-            talaba = Talaba.objects.get(id=request.POST.get('talaba')),
-            kitob = Kitob.objects.get(id=request.POST.get('kitob')),
-            admin = Admin.objects.get(id=request.POST.get('admin')),
-            olingan_sana = request.POST.get('olingan_sana'),
-            qaytarish_sana = request.POST.get('qaytarish_sana'),
-            qaytarilgan = True if request.POST.get('qaytarilgan') == 'on' else False
-        )
-        return redirect('recordlar')
+        form_data = RecordForm(request.POST)
+        if form_data.is_valid():
+            form_data.save()
+            return redirect('recordlar')
+
 
     context = {
         'talabalar': Talaba.objects.all(),
         'kitoblar': Kitob.objects.all(),
         'adminlar': Admin.objects.all(),
+        'form': RecordForm,
     }
     return render(request, 'record_create.html', context)
 
@@ -204,15 +202,14 @@ def record_talabalar(request):
 
 def mualliflar_from(request):
     if request.method == 'POST':
-        Muallif.objects.create(
-            ism = request.POST.get('ism'),
-            jins = request.POST.get('jins'),
-            tugilgan_sana = request.POST.get('tugilgan_sana'),
-            kitob_soni = request.POST.get('kitob_soni'),
-            tirik = True if request.POST.get('tirik') == 'on' else False
-        )
-        return redirect('maulliflar')
-    return render(request, 'create_maullif.html')
+        form_data = MuallifForm(request.POST)
+        if form_data.is_valid():
+            form_data.save()
+            return redirect('maulliflar')
+    context = {
+        'form': MuallifForm(),
+    }
+    return render(request, 'create_maullif.html', context)
 
 
 def talaba_update_view(request, talaba_id):
@@ -285,4 +282,16 @@ def record_edit(request, record_id):
         'record': record,
     }
     return render(request, 'recordlar_edit.html', context)
+
+def admin_create(request):
+    if request.method == 'POST':
+        form_data = AdminForm(request.POST)
+        if form_data.is_valid():
+            form_data.save()
+            return redirect('adminlar')
+
+    context = {
+        'form': AdminForm,
+    }
+    return render(request, 'admin_create.html', context)
 
